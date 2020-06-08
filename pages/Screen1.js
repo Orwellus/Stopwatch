@@ -79,6 +79,7 @@ export default class App extends Component{
       laps : [],
     }
   }
+  
   componentWillUnmount(){
     clearInterval(this.timer)
   }
@@ -103,19 +104,6 @@ export default class App extends Component{
       start: timestamp,
       now: timestamp,
     })
-  }
-
-  save = () =>{
-    const {laps,timer} = this.state
-    var RNFS = require('react-native-fs');
-    var path = RNFS.DocumentDirectoryPath + '/czasy.txt';
-    RNFS.writeFile(path,'ala ma kota','utf8')
-      .then((success) => {
-        console.log('file written!');
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
   }
 
   stop = () => {
@@ -195,12 +183,6 @@ export default class App extends Component{
               color='#FFFFFF' 
               background='#3D3D3D'
               onPress={this.reset}
-            />
-            <RoundButton 
-              title='Save' 
-              color='#FFFFFF' 
-              background='#3D3D3D'
-              onPress={this.save}
             />
             <RoundButton 
             title='Wznów' 
